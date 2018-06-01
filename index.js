@@ -38,6 +38,6 @@ export default ({ authAPI, share, jsApiList }) => {
   const rtn = get(authAPI, { params: { fromurl: location.href } })
     .then(check)
     .then(config(jsApiList))
-  rtn.reRegist = share => regist(share)
+  rtn.reRegist = share => regist(share)()
   return rtn
 }

@@ -20,7 +20,7 @@ import wxconfig from 'wxconfig'
 
 ### 3. config & reRegist
 ```js
-wxconfig({
+const wxcInstance = wxconfig({
   authAPI: WX_GET_JS_API_SIGN,
   share: {
     title: 'share title',
@@ -29,15 +29,15 @@ wxconfig({
     imgUrl: '/share300x300.jpg',
     success: () => {}
   },
-  jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+  jsApiList: ['onMenuShareTimeline', 'orSomeOtherAPI']
 })
 
 // re-regist, for some reason you'll need it
-wxconfig.reRegist({
-  title: 'share title',
-  desc: 'share subtitle',
+wxcInstance.reRegist({
+  title: 'another title',
+  desc: 'another subtitle',
   link: location.href,
-  imgUrl: '/share300x300.jpg',
+  imgUrl: '/anotherShare300x300.jpg',
   success: () => {}
 })
 ```
