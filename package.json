@@ -1,6 +1,6 @@
 {
   "name": "wxconfig",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "one step config WeChat JS-SDK",
   "license": "MIT",
   "repository": "gaoryrt/wxconfig",
