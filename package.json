@@ -1,0 +1,19 @@
+{
+  "name": "wxShare",
+  "version": "1.0.0",
+  "description": "one step config WeChat JS-SDK ",
+  "main": "dist/wxShare.min.js",
+  "license": "MIT",
+  "author": {
+    "name": "gaoryrt",
+    "email": "gaoryrt@gmail.com",
+    "url": "gaoryrt.com"
+  },
+  "keywords": [
+    "WeixinJSBridge",
+    "WeChat"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
