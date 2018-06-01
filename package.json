@@ -1,9 +1,9 @@
 {
-  "name": "wxShare",
-  "version": "1.0.0",
+  "name": "wxconfig",
+  "version": "1.0.2",
   "description": "one step config WeChat JS-SDK",
   "license": "MIT",
-  "repository": "gaoryrt/wxShare",
+  "repository": "gaoryrt/wxconfig",
   "author": {
     "name": "gaoryrt",
     "email": "gaoryrt@gmail.com",

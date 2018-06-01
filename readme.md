@@ -1,16 +1,16 @@
-## wxShare
+## wxconfig
 one step config WeChat JS-SDK
 
 ## HOW TO USE
-### 1. import wxShare
+### 1. import wxconfig
 ```shell
-yarn add wxShare
+yarn add wxconfig
 ```
 
 then
 
 ```js
-import wxshare from './wxShare'
+import wxconfig from 'wxconfig'
 ```
 
 ### 2. import wx-js-sdk
@@ -20,7 +20,7 @@ import wxshare from './wxShare'
 
 ### 3. config & reRegist
 ```js
-wxshare({
+wxconfig({
   authAPI: WX_GET_JS_API_SIGN,
   share: {
     title: 'share title',
@@ -33,7 +33,7 @@ wxshare({
 })
 
 // re-regist, for some reason you'll need it
-wxshare.reRegist({
+wxconfig.reRegist({
   title: 'share title',
   desc: 'share subtitle',
   link: location.href,
