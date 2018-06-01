@@ -1,6 +1,10 @@
 import { get } from 'axios'
 
 export default ({ authAPI, share, jsApiList }) => {
+  const shareDestIncludes = dest =>
+    (share.destination || [])
+      .map(toUpperCase)
+      .indexOf(dest.toUpperCase()) === -1 ? true : fase
   const check = res => {
     if (res.data.error_code) throw new Error(res.data.error_msg)
     return res.data
@@ -8,11 +12,20 @@ export default ({ authAPI, share, jsApiList }) => {
   const regist = ({
     title, desc, link, imgUrl, success = () => {}, cancel = () => {}
   }) => () => {
-    wx.onMenuShareTimeline({
+    if (shareDestIncludes('Timeline')) wx.onMenuShareTimeline({
       title, link, imgUrl, success, cancel
     })
-    wx.onMenuShareAppMessage({
+    if (shareDestIncludes('AppMessage')) wx.onMenuShareAppMessage({
       title, desc, link, imgUrl, type: '', dataUrl: '', success, cancel
+    })
+    if (shareDestIncludes('QQ')) wx.onMenuShareQQ({
+      title, desc, link, imgUrl, success, cancel
+    })
+    if (shareDestIncludes('Weibo')) wx.onMenuShareWeibo({
+      title, desc, link, imgUrl, success, cancel
+    })
+    if (shareDestIncludes('QZone')) wx.onMenuShareQZone({
+      title, desc, link, imgUrl, success, cancel
     })
   }
   const config = jsApiList => data => {

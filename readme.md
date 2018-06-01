@@ -23,11 +23,14 @@ import wxconfig from 'wxconfig'
 const wxcInstance = wxconfig({
   authAPI: WX_GET_JS_API_SIGN,
   share: {
+    dest: ['Timeline', 'AppMessage', 'QQ', 'Weibo', 'QZone'],
     title: 'share title',
     desc: 'share subtitle',
     link: location.href,
     imgUrl: '/share300x300.jpg',
-    success: () => {}
+    // success fn & cancle fn are optional
+    success: () => {},
+    cancle: () => {}
   },
   jsApiList: ['onMenuShareTimeline', 'orSomeOtherAPI']
 })
@@ -37,7 +40,6 @@ wxcInstance.reRegist({
   title: 'another title',
   desc: 'another subtitle',
   link: location.href,
-  imgUrl: '/anotherShare300x300.jpg',
-  success: () => {}
+  imgUrl: '/anotherShare300x300.jpg'
 })
 ```
