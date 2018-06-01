@@ -1,9 +1,9 @@
 {
   "name": "wxShare",
   "version": "1.0.0",
-  "description": "one step config WeChat JS-SDK ",
-  "main": "dist/wxShare.min.js",
+  "description": "one step config WeChat JS-SDK",
   "license": "MIT",
+  "repository": "gaoryrt/wxShare",
   "author": {
     "name": "gaoryrt",
     "email": "gaoryrt@gmail.com",
