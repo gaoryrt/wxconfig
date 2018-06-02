@@ -5,10 +5,6 @@ export default ({ authAPI, share, jsApiList }) => {
     (share.destination || [])
       .map(toUpperCase)
       .indexOf(dest.toUpperCase()) === -1 ? true : fase
-  const check = res => {
-    if (res.data.error_code) throw new Error(res.data.error_msg)
-    return res.data
-  }
   const regist = ({
     title, desc, link, imgUrl, success = () => {}, cancel = () => {}
   }) => () => {
@@ -18,15 +14,12 @@ export default ({ authAPI, share, jsApiList }) => {
     if (shareDestIncludes('AppMessage')) wx.onMenuShareAppMessage({
       title, desc, link, imgUrl, type: '', dataUrl: '', success, cancel
     })
-    if (shareDestIncludes('QQ')) wx.onMenuShareQQ({
+    const _conf = {
       title, desc, link, imgUrl, success, cancel
-    })
-    if (shareDestIncludes('Weibo')) wx.onMenuShareWeibo({
-      title, desc, link, imgUrl, success, cancel
-    })
-    if (shareDestIncludes('QZone')) wx.onMenuShareQZone({
-      title, desc, link, imgUrl, success, cancel
-    })
+    }
+    if (shareDestIncludes('QQ')) wx.onMenuShareQQ(_conf)
+    if (shareDestIncludes('Weibo')) wx.onMenuShareWeibo(_conf)
+    if (shareDestIncludes('QZone')) wx.onMenuShareQZone(_conf)
   }
   const config = jsApiList => data => {
     window.wx.config({
@@ -48,9 +41,7 @@ export default ({ authAPI, share, jsApiList }) => {
     })
     window.wx.ready(regist(share))
   }
-  const rtn = get(authAPI, { params: { fromurl: location.href } })
-    .then(check)
-    .then(config(jsApiList))
+  const rtn = get(authAPI).then(config(jsApiList))
   rtn.reRegist = share => regist(share)()
   return rtn
 }
