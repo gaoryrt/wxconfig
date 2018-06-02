@@ -1,6 +1,6 @@
 {
   "name": "wxconfig",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "one step config WeChat JS-SDK",
   "license": "MIT",
   "repository": "gaoryrt/wxconfig",
@@ -13,7 +13,5 @@
     "WeixinJSBridge",
     "WeChat"
   ],
-  "dependencies": {
-    "axios": "^0.18.0"
-  }
+  "dependencies": {}
 }
