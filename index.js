@@ -3,20 +3,21 @@ const get = (src, fn) => {
   xmlhr.onreadystatechange = () => {
     if (xmlhr.readyState !== 4) return
     if (xmlhr.status === 200) {
-      fn(xmlhr.responseText)
+      fn(JSON.parse(xmlhr.responseText))
     } else {
       throw new Error(xmlhr.responseText)
     }
   }
   xmlhr.open('GET', src, true)
   xmlhr.send(null)
+  return xmlhr
 }
 
 export default ({ authAPI, share, jsApiList }) => {
   const shareDestIncludes = dest =>
     (share.destination || [])
-      .map(toUpperCase)
-      .indexOf(dest.toUpperCase()) === -1 ? true : fase
+      .map(i => i.toUpperCase())
+      .indexOf(dest.toUpperCase()) === -1 ? true : false
   const regist = ({
     title, desc, link, imgUrl, success = () => {}, cancel = () => {}
   }) => () => {
@@ -53,7 +54,7 @@ export default ({ authAPI, share, jsApiList }) => {
     })
     window.wx.ready(regist(share))
   }
-  get(authAPI, config(jsApiList))
+  const rtn = get(authAPI, config(jsApiList))
   rtn.reRegist = share => regist(share)()
   return rtn
 }
