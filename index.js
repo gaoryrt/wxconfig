@@ -1,4 +1,16 @@
-import { get } from 'axios'
+const get = (src, fn) => {
+  const xmlhr = new XMLHttpRequest()
+  xmlhr.onreadystatechange = () => {
+    if (xmlhr.readyState !== 4) return
+    if (xmlhr.status === 200) {
+      fn(xmlhr.responseText)
+    } else {
+      throw new Error(xmlhr.responseText)
+    }
+  }
+  xmlhr.open('GET', src, true)
+  xmlhr.send(null)
+}
 
 export default ({ authAPI, share, jsApiList }) => {
   const shareDestIncludes = dest =>
@@ -41,7 +53,7 @@ export default ({ authAPI, share, jsApiList }) => {
     })
     window.wx.ready(regist(share))
   }
-  const rtn = get(authAPI).then(config(jsApiList))
+  get(authAPI, config(jsApiList))
   rtn.reRegist = share => regist(share)()
   return rtn
 }
