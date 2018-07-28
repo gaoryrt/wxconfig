@@ -1,3 +1,5 @@
+import wx from 'wechat-js-sdk-s'
+
 const get = (src, fn) => {
   const xmlhr = new XMLHttpRequest()
   xmlhr.onreadystatechange = () => {
@@ -35,7 +37,7 @@ export default ({ authAPI, share, jsApiList }) => {
     if (shareDestIncludes('QZone')) wx.onMenuShareQZone(_conf)
   }
   const config = jsApiList => data => {
-    window.wx.config({
+    wx.config({
       debug: false,
       appId: data.appId,
       timestamp: data.timestamp,
@@ -52,9 +54,9 @@ export default ({ authAPI, share, jsApiList }) => {
         'onVoicePlayEnd'
       ]
     })
-    window.wx.ready(regist(share))
+    wx.ready(regist(share))
   }
-  const rtn = get(authAPI, config(jsApiList))
+  const rtn = get(authAPI + '?fromurl=' + encodeURIComponent(location.href.split('#')[0]), config(jsApiList))
   rtn.reRegist = share => regist(share)()
   return rtn
 }

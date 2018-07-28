@@ -13,12 +13,7 @@ then
 import wxconfig from 'wxconfig'
 ```
 
-### 2. import wx-js-sdk
-```html
-<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-```
-
-### 3. config & reRegist
+### 2. config & reRegist
 ```js
 const wxcInstance = wxconfig({
   authAPI: WX_GET_JS_API_SIGN,

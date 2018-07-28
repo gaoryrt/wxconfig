@@ -4,14 +4,20 @@
   "description": "one step config WeChat JS-SDK",
   "license": "MIT",
   "repository": "gaoryrt/wxconfig",
+  "main": "dist/wxShare.min.js",
   "author": {
     "name": "gaoryrt",
     "email": "gaoryrt@gmail.com",
     "url": "gaoryrt.com"
   },
+  "scripts": {
+    "build": "poi build --format umd"
+  },
   "keywords": [
     "WeixinJSBridge",
     "WeChat"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "wechat-js-sdk-s": "^1.3.2"
+  }
 }
